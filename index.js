@@ -47,7 +47,6 @@ client.on("message", async message => {
 
     if(message.mentions.members.first()){
         let id = message.mentions.members.first().id
-        console.log(id);
         if(id == 242654955759075329) return message.channel.send("https://media.discordapp.net/attachments/816946219472519201/820241776338010142/ezgif.com-gif-maker.gif") // , {files: ["./media/ezgif.com-gif-maker.gif"]}
     }
 
@@ -113,7 +112,7 @@ client.on("message", async message => {
 
     if(command === `${prefix}funfact`){
         let rng = Math.random();
-        let facts = ["Jerrie is een neushoorn"," Max is DE MAX","Karanbier houdt van pilsjes","Gunks is big chungus","Liere houdt van 'lire' (lezen)","Sandy ~~hates~~ loves sand","Max zijn laptop houdt van ontploffen","Lowiek is dom","Neushoorns zijn altijd Jerrie","Bela likes to be called C-la   -Lil G","Winston likes to **win** **ston**ks   -Lil G","haha programming go brrrrrr",""]
+        let facts = ["Jerrie is een neushoorn"," Max is DE MAX","Karanbier houdt van pilsjes","Gunks is big chungus","Liere houdt van 'lire' (lezen)","Sandy ~~hates~~ loves sand","Max zijn laptop houdt van ontploffen","Lowiek is dom","Neushoorns zijn altijd Jerrie","Bela likes to be called C-la   -Lil G","Winston likes to **win** **ston**ks   -Lil G","haha programming go brrrrrr","Mario vindt Bowser gay, en zegt dit in een van de games","banana","haha stinky stinky"]
         let fact = facts[Math.floor(rng * facts.length)];
         let print = "Fun Fact " + Math.floor(rng * facts.length) + ": " + fact
         return message.channel.send(print);
