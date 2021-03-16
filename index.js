@@ -1,6 +1,12 @@
 const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
-const rl = require("readline")
+// const readline = require("readline")
+const fs = require("fs");
+
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
 
 function login(token) {
     client.login(token);
@@ -10,7 +16,7 @@ const client = new discord.Client();
 
 //this code makes it so i can have two separate instances, if you don't want this, just use
 // login(botConfig.token)
-//if you do want to use this script, i trust you understand how this works and make it work yourself
+//if you do want to use this method, i trust you understand how this works and make it work yourself
 
 if(botConfig.test === "yes") {
     login(botConfig.testjeelaa);
@@ -107,7 +113,7 @@ client.on("message", async message => {
 
     if(command === `${prefix}funfact`){
         let rng = Math.random();
-        let facts = ["Jerrie is een neushoorn"," Max is DE MAX","Karanbier houdt van pilsjes","Gunks is big chungus","Liere houdt van 'lire' (lezen)","Sandy ~~hates~~ loves sand","Max zijn laptop houdt van ontploffen","Lowiek is dom","Neushoorns zijn altijd Jerrie","Bela likes to be called C-la   -Lil G","Winston likes to **win** **ston**ks   -Lil G"]
+        let facts = ["Jerrie is een neushoorn"," Max is DE MAX","Karanbier houdt van pilsjes","Gunks is big chungus","Liere houdt van 'lire' (lezen)","Sandy ~~hates~~ loves sand","Max zijn laptop houdt van ontploffen","Lowiek is dom","Neushoorns zijn altijd Jerrie","Bela likes to be called C-la   -Lil G","Winston likes to **win** **ston**ks   -Lil G","haha programming go brrrrrr",""]
         let fact = facts[Math.floor(rng * facts.length)];
         let print = "Fun Fact " + Math.floor(rng * facts.length) + ": " + fact
         return message.channel.send(print);
