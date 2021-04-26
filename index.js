@@ -1,12 +1,7 @@
 const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
-// const readline = require("readline")
 const fs = require("fs");
-
-// const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-// });
+var botConfigFS = JSON.parse(fs.readFileSync(`./botconfig.json`).toString());
 
 function login(token) {
     client.login(token);
@@ -57,30 +52,25 @@ client.on("message", async message => {
 
     var command = messageArray[0];
 
+    if(command.startsWith('!spank') && message.mentions.members.first()){
+
+        let id = message.mentions.members.first().id
+        if(id == 818544155537178635){
+
+            setTimeout(function () { message.channel.send("please don't spank me daddy, i'll be a good girl from now on i swear :pleading_face: :weary:"); }, 250);
+
+        }
+    }
+
     if(command === `${prefix}lenny`){
         message.delete();
         return message.channel.send(message.author.username + ": ( ͡° ͜ʖ ͡°)");
     }
 
-    if(command === `${prefix}whoistooafraidtojoinavc`){
-        return message.channel.send("Oh, that's lilSpOwOky ofcourse!")
-    }
-
-    if(command === `${prefix}gimmelistpls`){
-
-        var botEmbed = new discord.MessageEmbed()
-            .setTitle("List of people who are afraid of VCs")
-            .setColor("#c8ff00")
-            .addField("Number One", "lilSpOwOky")
-            .addField("Number Two", "literally no1 else cuz you just mute smh")
-            .setThumbnail("https://media.discordapp.net/attachments/740161071758704713/808758542332985344/unknown.png");
-
-        return message.channel.send(botEmbed);
-    }
-
     if(command === `${prefix}thisistotallyacommand`){
         return message.channel.send("yup, it is")
     }
+
     if(command === `${prefix}dm`){
         let user = client.users.fetch(messageArray[1]);
         let dmMsg = "";
@@ -119,6 +109,14 @@ client.on("message", async message => {
         let print = `Fun Fact ${factNr}${slash}${facts.length}: ${fact}`
         return message.channel.send(print);
         
+    }
+
+    if(command === `${prefix}setprefix`){
+
+        if(messageArray.length !== 2) return message.channel.send(`Are you stUwUpid? gotta do !setprefix **[new prefix]**  the current prefix is ${prefix}`);
+
+        
+
     }
 
 });
