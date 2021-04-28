@@ -115,7 +115,7 @@ client.on("message", async message => {
 
         if(messageArray.length !== 2) return message.channel.send(`Are you stUwUpid? gotta do !setprefix **[new prefix]**  the current prefix is ${prefix}`);
 
-        
+        message.channel.send("not done yet, you idiot")
 
     }
 
