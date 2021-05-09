@@ -3,3 +3,4 @@ botconfig.json
 media/
 node_modules/
 startBot.bat
+test.ts
