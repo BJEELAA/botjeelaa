@@ -73,9 +73,10 @@ client.on("message", async message => {
     var command = messageArray[0];
     var args = messageArray.slice(1);
 
+    //search for module in client.commands collection
     var commands = client.commands.get(command.slice(prefix.length));
 
-    //run appropriate module
+    //run appropriate javascript module in ./commands/
     if(commands) commands.run(client, message, args, messageArray);
 
 });
