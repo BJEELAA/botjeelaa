@@ -58,13 +58,6 @@ client.on("message", async message => {
 
     }
 
-    //funny gif when bjeelaa pinged
-
-    // if(message.mentions.members.first()){
-    //     let id = message.mentions.members.first().id
-    //     if(id == 242654955759075329) return message.channel.send("https://media.discordapp.net/attachments/816946219472519201/820241776338010142/ezgif.com-gif-maker.gif") // , {files: ["./media/ezgif.com-gif-maker.gif"]}
-    // }
-
     var prefix = botConfig.prefix;
 
     var messageArray = message.content.split(" ");
