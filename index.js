@@ -1,8 +1,7 @@
 const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
 const fs = require("fs");
-
-//login function
+//login functie
 function login(token) {
     client.login(token);
 }
