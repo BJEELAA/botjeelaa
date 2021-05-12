@@ -60,7 +60,7 @@ client.on("message", async message => {
 
     var prefix = botConfig.prefix;
 
-    var messageArray = message.content.split(" ");
+    var messageArray = message.content.split(/ +/);
     var arrayLength = messageArray.length;
 
     var command = messageArray[0];
