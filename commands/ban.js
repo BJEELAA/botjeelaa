@@ -1,11 +1,11 @@
 const discord = require("discord.js");
 
-module.exports.run = async (client, message, args, messageArray) => {
+module.exports.run = async (client, message, args, messageArray, prefix) => {
 
     if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("Sorry, but you don't have the correct permissions to do this");
     if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("Seems like I don't have the necessary permissions to do this");
-    if (!message.mentions.members.first()) return message.reply("Usage: !ban <@person> <reason>");
-    if (args.length < 2) return message.reply("Usage: !ban <@person> <reason>");
+    if (!message.mentions.members.first()) return message.reply(`Usage: ${prefix}ban <@person> <reason>`);
+    if (args.length < 2) return message.reply(`Usage: ${prefix}ban <@person> <reason>`);
 
     var banUser = message.mentions.members.first();
     var reason = args.splice(1).join(" ");

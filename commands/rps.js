@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 
-module.exports.run = async (client, message, args, messageArray) => {
+module.exports.run = async (client, message, args, messageArray, prefix) => {
 
     if (args.length != 0) {
 
@@ -26,9 +26,9 @@ module.exports.run = async (client, message, args, messageArray) => {
             if (c == "scissors" && p == "rock") return message.channel.send("I picked **scissors** and you picked **rock**, so you win :(");
             if (c == "scissors" && p == "paper") return message.channel.send("I picked **scissors** and you picked **paper**, so I win :D");
 
-        }else return message.channel.send("Please use: !rps rock/paper/scissors");
+        }else return message.channel.send(`Please use: ${prefix}rps rock/paper/scissors`);
 
-    }else return message.channel.send("Please use: !rps rock/paper/scissors");
+    }else return message.channel.send(`Please use: ${prefix}rps rock/paper/scissors`);
 
 }
 

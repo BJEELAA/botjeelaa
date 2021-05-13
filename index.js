@@ -70,6 +70,6 @@ client.on("message", async message => {
     var commands = client.commands.get(command.slice(prefix.length));
 
     //run appropriate javascript module in ./commands/
-    if(commands) commands.run(client, message, args, messageArray);
+    if(commands) commands.run(client, message, args, messageArray, prefix);
 
 });

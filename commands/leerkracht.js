@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 
-module.exports.run = async(client, message, args, messageArray) =>{
+module.exports.run = async(client, message, args, messageArray, prefix) =>{
 
     function lkr(leerkracht, beschrijving){
 
@@ -10,7 +10,7 @@ module.exports.run = async(client, message, args, messageArray) =>{
 
     }
 
-    if(args.length === 0) return message.channel.send("Add a teacher: !leerkracht [last name teacher]");
+    if(args.length === 0) return message.channel.send(`Add a teacher: ${prefix}leerkracht [last name teacher]`);
 
     lkr("Bracke", "Mr. Bracke is onze informatica leerkracht.\n Hij leert ons Excel.");
     lkr("VanCauter", "Mvr. Van Cauter is onze IW leerkracht, ze leert ons erg weinig bij.");
