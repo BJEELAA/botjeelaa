@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
     var banUser = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
 
-    if(banUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Can't ban moderators");
+    if (banUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Can't ban moderators");
 
     var reason = args.splice(1).join(" ");
     var embedPrompt = new discord.MessageEmbed()
@@ -26,45 +26,48 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
         **Banned by: ** ${message.author}
         **Reason: ** ${reason}`)
 
-    message.channel.send(embedPrompt).then(async msg =>{
+    message.channel.send(embedPrompt).then(async msg => {
 
         var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
 
-        if(emoji === "✅"){
+        if (emoji === "✅") {
 
             msg.delete();
 
-            message.mentions.members.first().send(`You have been kicked for: **${reason}**`);
-            banUser.ban({days: 7, reason: reason}).catch(err =>{
+            message.mentions.members.first().send(`You have been banned for: **${reason}**`).then(() => {
 
-                if(err) return message.reply("Something went wrong");
+                banUser.ban({ days: 7, reason: reason }).catch(err => {
+
+                    if (err) return message.reply("Something went wrong");
+
+                });
+
+                message.channel.send("User succesfully banned");
+
+                var banChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+                banChannel.send(embedBan);
 
             });
 
-            message.channel.send("User succesfully banned");
-
-            var banChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
-            banChannel.send(embedBan);
-
-        }else if(emoji === "❌"){
+        } else if (emoji === "❌") {
 
             msg.delete();
-            return message.reply("Cancelled ban").then(m => m.delete(5000)); 
+            return message.reply("Cancelled ban").then(m => m.delete(5000));
 
         }
 
     })
 
-    async function promptMessage(message, author, time, reactions){
+    async function promptMessage(message, author, time, reactions) {
 
         time *= 1000;
-        for(const reaction of reactions){
+        for (const reaction of reactions) {
             await message.react(reaction);
         }
 
         var filter = (reaction, user) => reactions.includes(reaction.emoji.name) && user.id === author.id;
 
-        return message.awaitReactions(filter, {max: 1, time: time}).then(collected => collected.first() && collected.first().emoji.name);
+        return message.awaitReactions(filter, { max: 1, time: time }).then(collected => collected.first() && collected.first().emoji.name);
 
 
     }

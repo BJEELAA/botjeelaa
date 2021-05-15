@@ -35,17 +35,21 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
             msg.delete();
 
-            message.mentions.members.first().send(`You have been kicked for: **${reason}**`);
-            kickUser.kick(reason).catch(err =>{
+            message.mentions.members.first().send(`You have been kicked for: **${reason}**`).then(() =>{
 
-                if(err) return message.reply("Something went wrong");
+                kickUser.kick(reason).catch(err =>{
+
+                    if(err) return message.reply("Something went wrong");
+    
+                });
+    
+                message.channel.send(`User succesfully kicked`);
+    
+                var kickChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+                kickChannel.send(embedKick);
 
             });
-
-            message.channel.send(`User succesfully kicked`);
-
-            var kickChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
-            kickChannel.send(embedKick);
+            
 
         }else if(emoji === "❌"){
 
