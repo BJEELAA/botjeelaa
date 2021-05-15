@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
             msg.delete();
 
-            message.mentions.members.first().send(`You have been kicked for: **${reason}**`).then(() =>{
+            message.mentions.members.first().send(`You have been kicked for: **${reason}**`).catch(() => console.log('Could not DM this user')).then(() =>{
 
                 kickUser.kick(reason).catch(err =>{
 
