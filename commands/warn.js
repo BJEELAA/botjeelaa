@@ -12,6 +12,7 @@ module.exports.run = async (client, message, args, messageArray) => {
     if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("Seems like I don't have the necessary permissions to do this");
 
     var warnUser = message.mentions.members.first();
+    var dmUser = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
 
     var reason = args.slice(1).join(" ");
 
@@ -41,10 +42,10 @@ module.exports.run = async (client, message, args, messageArray) => {
     
     message.channel.send("User succesfully warned");
 
+    message.mentions.members.first().send(`You have been warned for: **${reason}**\nTotal amount of warns: **${warns[warnUser.id].warns}**`);
     var warnChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
     warnChannel.send(embedWarn);
-    message.mentions.members.first().send(`You have been warned for: **${reason}**\nTotal amount of warns: **${warns[warnUser.id].warns}**`);
-
+    
 }
 
 module.exports.help = {

@@ -35,6 +35,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
             msg.delete();
 
+            message.mentions.members.first().send(`You have been kicked for: **${reason}**`);
             kickUser.kick(reason).catch(err =>{
 
                 if(err) return message.reply("Something went wrong");
@@ -45,7 +46,6 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
             var kickChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
             kickChannel.send(embedKick);
-            message.mentions.members.first().send(`You have been kicked for: **${reason}**`);
 
         }else if(emoji === "❌"){
 
