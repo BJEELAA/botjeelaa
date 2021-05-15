@@ -9,6 +9,24 @@ function login(token) {
 const client = new discord.Client();
 client.commands = new discord.Collection();
 
+client.on('guildMemberAdd', async member => {
+
+    var role = member.guild.roles.cache.get('843196142635188225');
+
+    if(!role) return;
+
+    member.roles.add(role);
+
+    var channel = member.guild.channels.cache.get('843197361819222016');
+
+    if(!channel) return;
+
+    channel.send(`Welcome to the server <@${member.id}>!`);
+
+    member.send("Hey! Welcome to the **BJEELAA Dev** server!\nMake sure to read the rules, and all the information channels!\nHave fun on the server!");
+
+})
+
 fs.readdir("./commands/", (err, files) =>{
 
     if(err) console.log(err);
