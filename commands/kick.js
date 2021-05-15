@@ -45,6 +45,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
             var kickChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
             kickChannel.send(embedKick);
+            message.mentions.members.first().send(`You have been kicked for: **${reason}**`);
 
         }else if(emoji === "❌"){
 

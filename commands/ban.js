@@ -44,6 +44,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
             var banChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
             banChannel.send(embedBan);
+            message.mentions.members.first().send(`You have been banned for: **${reason}**`);
 
         }else if(emoji === "❌"){
 

@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args, messageArray) => {
     warns[warnUser.id].warns++;
 
     fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-        if (err) console.log("Writing warnings.json went wrong"); message.channel.send("Writing warnings.json went wrong");
+        if (err) console.log(err);
     });
 
     var embedWarn = new discord.MessageEmbed()
@@ -43,6 +43,7 @@ module.exports.run = async (client, message, args, messageArray) => {
 
     var warnChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
     warnChannel.send(embedWarn);
+    message.mentions.members.first().send(`You have been warned for: **${reason}**\nTotal amount of warns: **${warns[warnUser.id].warns}**`);
 
 }
 
