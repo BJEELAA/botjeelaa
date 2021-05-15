@@ -1,6 +1,8 @@
 const discord = require("discord.js");
+const fs = require("fs");
+const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
-module.exports.run = async(client, message, args, messageArray) =>{
+module.exports.run = async (client, message, args, messageArray) => {
 
     // _warn @member reason
 
@@ -8,14 +10,39 @@ module.exports.run = async(client, message, args, messageArray) =>{
     if (!message.mentions.members.first()) return message.reply(`Usage: ${prefix}warn <@person> <reason>`);
     if (args.length < 2) return message.reply(`Usage: ${prefix}warn <@person> <reason>`);
     if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("Seems like I don't have the necessary permissions to do this");
-   
+
     var warnUser = message.mentions.members.first();
 
     var reason = args.slice(1).join(" ");
 
-    if(!warnUser) return message.channel.send("Couldn't find user");
+    if (!warnUser) return message.channel.send("Couldn't find user");
 
-    if(warnUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Can't warn moderators");
+    if (warnUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Can't warn moderators");
+
+    if (!warns[warnUser.id]) warns[warnUser.id] = {
+        warns: 0
+    };
+
+    warns[warnUser.id].warns++;
+
+    fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
+        if (err) console.log("Writing warnings.json went wrong"); message.channel.send("Writing warnings.json went wrong");
+    });
+
+    var embedWarn = new discord.MessageEmbed()
+        .setTitle(`**Warn**`)
+        .setColor("#ff0000")
+        .setFooter(message.member.displayName)
+        .setTimestamp()
+        .setDescription(`**Warned: ** ${warnUser.user.tag} (${warnUser.user.id})
+        **Warned by: ** ${message.author}
+        **Reason: ** ${reason}
+        **Warn amount: ** ${warns[warnUser.id].warns}`);
+    
+    message.channel.send("User succesfully warned");
+
+    var warnChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+    warnChannel.send(embedWarn);
 
 }
 

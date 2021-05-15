@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
     if (!message.mentions.members.first()) return message.reply(`Usage: ${prefix}ban <@person> <reason>`);
     if (args.length < 2) return message.reply(`Usage: ${prefix}ban <@person> <reason>`);
 
-    var banUser = message.mentions.members.first();
+    var banUser = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
 
     if(banUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Can't ban moderators");
 
@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
         .setDescription(`Do you want to ban ${banUser.user.tag}?`)
 
     var embedBan = new discord.MessageEmbed()
-        .setTitle(`User banned`)
+        .setTitle(`**Ban**`)
         .setColor("#ff0000")
         .setFooter(message.member.displayName)
         .setTimestamp()
@@ -40,7 +40,10 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
             });
 
-            message.channel.send(embedBan);
+            message.channel.send("User succesfully banned");
+
+            var banChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+            banChannel.send(embedBan);
 
         }else if(emoji === "❌"){
 

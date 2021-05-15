@@ -7,11 +7,12 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
     if (!message.mentions.members.first()) return message.reply(`Usage: ${prefix}kick <@person> <reason>`);
     if (args.length < 2) return message.reply(`Usage: ${prefix}kick <@person> <reason>`);
 
-    var kickUser = message.mentions.members.first();
+    var kickUser = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
 
     if(kickUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Can't kick moderators");
 
     var reason = args.splice(1).join(" ");
+
     var embedPrompt = new discord.MessageEmbed()
         .setColor("GREEN")
         .setTitle("React within 30 seconds")
@@ -40,7 +41,10 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
             });
 
-            message.channel.send(embedKick);
+            message.channel.send(`User succesfully kicked`);
+
+            var kickChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+            kickChannel.send(embedKick);
 
         }else if(emoji === "❌"){
 
