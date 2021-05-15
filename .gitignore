@@ -2,3 +2,4 @@ node_modules/
 startBot.bat
 botconfig.json
 commands/dirk.js
+warnings.json

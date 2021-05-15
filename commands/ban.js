@@ -8,6 +8,9 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
     if (args.length < 2) return message.reply(`Usage: ${prefix}ban <@person> <reason>`);
 
     var banUser = message.mentions.members.first();
+
+    if(banUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Can't ban moderators");
+
     var reason = args.splice(1).join(" ");
     var embedPrompt = new discord.MessageEmbed()
         .setColor("GREEN")
