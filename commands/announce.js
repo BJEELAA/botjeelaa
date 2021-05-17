@@ -36,12 +36,16 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
     
     var annChannel = client.channels.cache.find(channel => channel.name === options.channel);
 
-    var annPing = message.guild.roles.cache.find(role => role.name === "Announcement Ping")
+    var annPing = message.guild.roles.cache.find(role => role.name === "Announcement Ping");
 
     if(!annChannel) return message.channel.send("Channel couldn't be found");
 
-    annChannel.send(`<@&${annPing.id}>`);
+    if(!annPing){
+        annChannel.send(annEmbed);
+    }else{
+        annChannel.send(`<@&${annPing.id}>`);
     annChannel.send(annEmbed);
+    }
 
 }
 
