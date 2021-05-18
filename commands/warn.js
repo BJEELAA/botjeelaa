@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
     message.channel.send("User succesfully warned");
 
     message.mentions.members.first().send(`You have been warned for: **${reason}**\nTotal amount of warns: **${warns[warnUser.id].warns}**`);
-    var warnChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+    var warnChannel = message.guild.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
     warnChannel.send(embedWarn);
     
 }

@@ -44,7 +44,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
                 message.channel.send("User succesfully banned");
 
-                var banChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+                var banChannel = message.guild.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
                 banChannel.send(embedBan);
 
             });

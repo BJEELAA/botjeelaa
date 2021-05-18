@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
         
         ${options.message}`);
     
-    var annChannel = client.channels.cache.find(channel => channel.name === options.channel);
+    var annChannel = message.guild.channels.cache.find(channel => channel.name === options.channel);
 
     var annPing = message.guild.roles.cache.find(role => role.name === "Announcement Ping");
 

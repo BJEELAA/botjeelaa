@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
         **Warns cleared by: ** ${message.author}
         **Amount of warns cleared: ** ${personWarns}`);
 
-    var clearChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+    var clearChannel = message.guild.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
     clearChannel.send(embedClear);
     message.channel.send(`Succesfully cleared all of ${person}'s warnings (${personWarns})`);
     message.mentions.members.first().send(`Your ${personWarns} warning(s) have been removed by ${message.author.tag}`);

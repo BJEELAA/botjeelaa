@@ -45,7 +45,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
     
                 message.channel.send(`User succesfully kicked`);
     
-                var kickChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+                var kickChannel = message.guild.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
                 kickChannel.send(embedKick);
 
             });

@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
         .setDescription(`**Unmuted: ** ${muteUser.user.tag} (${muteUser.user.id}`);
 
 
-    var muteChannel = client.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
+    var muteChannel = message.guild.channels.cache.find(channel => channel.name === "mod-actions") || message.channel;
 
     await (muteUser.roles.add(muteRole.id));
     message.channel.send(`Succesfully muted ${muteUser.user.tag}   **Duration: ** ${muteTime}   **Reason: ** ${reason}`);
