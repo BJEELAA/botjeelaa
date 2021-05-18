@@ -3,3 +3,4 @@ startBot.bat
 botconfig.json
 commands/dirk.js
 warnings.json
+test.py
