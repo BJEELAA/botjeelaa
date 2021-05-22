@@ -61,6 +61,18 @@ client.on("ready", async () => {
 });
 
 client.on("message", async message => {
+    var messageContent = message.content
+    if(messageContent.includes("@someone")){
+        if(message.member.hasPermission("MANAGE_MESSAGES")){
+
+            var randomPer = message.guild.members.cache.random().user;
+            var sentence = message.content.split("@someone");
+            var randomPingMsg = `**${message.author.username}:** \`\`${sentence[0]}${randomPer}${sentence[1]}\`\``;
+
+            message.delete().then(() => message.channel.send(randomPingMsg));
+
+        }else return message.channel.send("You don't have the necessary permissions");
+    }
 
     if(message.author.bot) return;
 
