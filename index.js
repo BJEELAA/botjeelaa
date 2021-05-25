@@ -67,7 +67,7 @@ client.on("message", async message => {
 
             var randomPer = message.guild.members.cache.random().user;
             var sentence = message.content.split("@someone");
-            var randomPingMsg = `**${message.author.username}:** \`\`${sentence[0]}${randomPer}${sentence[1]}\`\``;
+            var randomPingMsg = `**${message.author.username}:** ${sentence[0]}${randomPer}${sentence[1]}`;
 
             message.delete().then(() => message.channel.send(randomPingMsg));
 
