@@ -21,6 +21,7 @@ module.exports.run = async(client, message, args, messageArray, prefix) =>{
     lkr("Neckebroeck", "Nekkie is onze leerkracht Frans, maar hij geeft les over van alles en nog wat. Hij is erg ambitieus en geeft graag buizen aan meisjes genaamd Margaux.");
     lkr("VanEck", "Mr. van Eck is onze leerkracht Engels. Hij speelt games en geeft extra opdrachten aan de goede werkers.");
     lkr("Renard", "Mr. Renard is onze altijd-te-laat leerkracht Nederlands. Zoals ik zal zei, is hij al-tijd te laat. Dat is dan blijkbaar onze schuld dus gaat hij dan 10 minuten langer door.");
+    lkr("Teirlynck", "Mvr. Teirlynck is onze PO-leerkracht. Ze maakt graag grapjes over s*x en dat soort dingen. Ze is een leuke leerkracht.")
 
 }
 
