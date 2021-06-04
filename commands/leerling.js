@@ -33,6 +33,6 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
 
 module.exports.help = {
 
-    name: "leerling"
+    name: "ll"
 
 }
