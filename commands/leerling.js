@@ -26,7 +26,8 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
     l("sander", "Sandy Wandy is pog. Speelt veel games en heeft huge brain.");
     l("ibe", "Ibe is een sporter, schrijver en slim persoon. Hij kan zonder moeite 3 rondjes rond de wereld rennen, hij schrijft boeken in zijn vrije tijd en haalt goede punten op elke toets.");
     l("ewout", "Ewaaaa drairieeeeeeeeeeeee Hoe is 't met de kinderssssssss wolllaaaaaah");
-    l("", "")
+    l("gregg", "Greggieboyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+    l("sebastiaan", "Sebastiaan is een Nederlander, just like me ;)");
 
 }
 
