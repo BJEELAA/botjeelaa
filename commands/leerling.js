@@ -22,7 +22,7 @@ module.exports.run = async (client, message, args, messageArray, prefix) => {
     l("timo", "Timo is ~~een strever~~ slim. Hij haalt 10/10 op zo goed als elke toets en hij speelt Minecraft.");
     l("senne", "Senne heeft oranje/rood haar, draagt een bril, heeft een brein zo groot als de maan en heeft dyslexie. Speelt ook Minecraft.");
     l("jerom", "Jerrie is een neushoorn. That's it. Een menselijke neushoorn.");
-    l("bela", "Dat ben ik, of technisch gezien dat is mijn bedenker ofzo. Erg raar om zoiets over jezelf te schrijven");
+    l("bela", "Dat ben ik, of technisch gezien dat is mijn bedenker ofzo. Erg raar om zoiets over jezelf te schrijven.");
     l("sander", "Sandy Wandy is pog. Speelt veel games en heeft huge brain.");
     l("ibe", "Ibe is een sporter, schrijver en slim persoon. Hij kan zonder moeite 3 rondjes rond de wereld rennen, hij schrijft boeken in zijn vrije tijd en haalt goede punten op elke toets.");
     l("ewout", "Ewaaaa drairieeeeeeeeeeeee Hoe is 't met de kinderssssssss wolllaaaaaah");
