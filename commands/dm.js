@@ -9,6 +9,7 @@ module.exports.run = async (client, message, args, messageArray) => {
             dmMsg += messageArray[i] + " "
         }
         dmUser.send(dmMsg);
+		message.channel.send(`DM'd "*${dmMsg}*" to **${dmUser.username}**`)
     })
     return;
 

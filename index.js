@@ -84,7 +84,7 @@ client.on("message", async message => {
             let channel = client.channels.cache.find(channel => channel.name === "logjeelaa")
             channel.send(message.author.username + ": " + message.content);
         }
-        return message.channel.send("logged in all accessable #logjeelaa channels");
+        return message.channel.send("imagine being so lonely that you'd go as far as to dm a literal robot... **you petty nerd**");
 
     }
 
